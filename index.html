@@ -1,1 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>श्रीमद्भगवद्गीता | Bhagavad Gita | ভগবদ্গীতা</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+Devanagari:wght@300;400;600&family=Noto+Serif+Bengali:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #d4a843;
+  --gold2: #f0c96a;
+  --deep: #0a0510;
+  --purple: #1a0a2e;
+  --cosmic: #0d0620;
+  --lotus: #c9547a;
+  --cyan: #4dd9e0;
+  --text: #f0e6d3;
+  --muted: #a89070;
+}
 
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--deep);
+  color: var(--text);
+  font-family: 'Crimson Pro', Georgia, serif;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ========= COSMIC BACKGROUND ========= */
+#cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.stars-layer {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.9) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.7) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(2px 2px at 90% 40%, rgba(255,255,255,0.9) 0%, transparent 100%),
+    radial-gradient(1px 1px at 15% 90%, rgba(255,255,200,0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 45%, rgba(200,200,255,0.8) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 80% 15%, rgba(255,255,255,0.9) 0%, transparent 100%);
+}
+#starfield { position:absolute; inset:0; }
+
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: nebulaPulse 8s ease-in-out infinite alternate;
+}
+.n1 { width:600px;height:600px;top:-100px;left:-150px;background:radial-gradient(circle,rgba(80,20,120,0.35) 0%,transparent 70%); }
+.n2 { width:500px;height:500px;top:30%;right:-100px;background:radial-gradient(circle,rgba(30,80,150,0.25) 0%,transparent 70%); animation-delay:-3s; }
+.n3 { width:700px;height:700px;bottom:-150px;left:20%;background:radial-gradient(circle,rgba(150,40,80,0.2) 0%,transparent 70%); animation-delay:-5s; }
+.n4 { width:400px;height:400px;top:60%;left:10%;background:radial-gradient(circle,rgba(20,120,140,0.15) 0%,transparent 70%); animation-delay:-2s; }
+
+@keyframes nebulaPulse {
+  from { transform: scale(1) rotate(0deg); opacity:0.6; }
+  to   { transform: scale(1.15) rotate(5deg); opacity:1; }
+}
+
+/* ========= FLOATING PARTICLES ========= */
+.particle {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(100vh) scale(0); opacity:0; }
+  10%  { opacity:1; }
+  90%  { opacity:0.6; }
+  100% { transform: translateY(-20px) scale(1); opacity:0; }
+}
+
+/* ========= OM MANDALA ========= */
+#mandala-wrap {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.04;
+}
+#mandala-wrap svg {
+  width: 90vmin;
+  height: 90vmin;
+  animation: mandalaRotate 120s linear infinite;
+}
+@keyframes mandalaRotate { to { transform: rotate(360deg); } }
+
+/* ========= HEADER ========= */
+#hero {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.om-symbol {
+  font-size: clamp(5rem, 15vw, 10rem);
+  color: var(--gold);
+  text-shadow: 0 0 60px rgba(212,168,67,0.6), 0 0 120px rgba(212,168,67,0.3);
+  animation: omGlow 4s ease-in-out infinite;
+  line-height: 1;
+  margin-bottom: 1rem;
+  font-family: 'Noto Serif Devanagari', serif;
+}
+@keyframes omGlow {
+  0%,100% { text-shadow: 0 0 40px rgba(212,168,67,0.5), 0 0 80px rgba(212,168,67,0.3); }
+  50%      { text-shadow: 0 0 80px rgba(212,168,67,0.9), 0 0 160px rgba(212,168,67,0.5), 0 0 240px rgba(240,201,106,0.2); }
+}
+
+.hero-title-sa {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  font-weight: 600;
+  color: var(--gold2);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+.hero-title-en {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.3rem;
+}
+.hero-title-bn {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--text);
+  opacity: 0.85;
+  margin-bottom: 2rem;
+}
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.divider {
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 1.5rem auto;
+}
+
+/* ========= AUDIO CONTROLS ========= */
+#audio-bar {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(10,5,20,0.85);
+  border: 1px solid rgba(212,168,67,0.3);
+  border-radius: 50px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  backdrop-filter: blur(10px);
+}
+#audio-bar button {
+  background: none;
+  border: none;
+  color: var(--gold);
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: transform 0.2s;
+  line-height: 1;
+}
+#audio-bar button:hover { transform: scale(1.2); }
+.vol-label { font-size: 0.75rem; color: var(--muted); }
+#vol-slider {
+  width: 70px;
+  accent-color: var(--gold);
+}
+#sound-waves {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 20px;
+}
+.wave-bar {
+  width: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+  animation: waveAnim 1.2s ease-in-out infinite;
+}
+.wave-bar:nth-child(1){height:8px;animation-delay:0s;}
+.wave-bar:nth-child(2){height:14px;animation-delay:0.2s;}
+.wave-bar:nth-child(3){height:10px;animation-delay:0.4s;}
+.wave-bar:nth-child(4){height:16px;animation-delay:0.1s;}
+.wave-bar:nth-child(5){height:6px;animation-delay:0.3s;}
+@keyframes waveAnim {
+  0%,100%{transform:scaleY(0.4);opacity:0.5;}
+  50%{transform:scaleY(1);opacity:1;}
+}
+.wave-bar.paused { animation-play-state: paused; }
+
+/* ========= CHAPTER NAV ========= */
+#chapter-nav {
+  position: relative;
+  z-index: 10;
+  padding: 2rem 1rem 3rem;
+  text-align: center;
+}
+#chapter-nav h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 1.5rem;
+}
+.chapter-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.ch-btn {
+  background: rgba(212,168,67,0.08);
+  border: 1px solid rgba(212,168,67,0.25);
+  color: var(--gold2);
+  padding: 7px 14px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.ch-btn:hover, .ch-btn.active {
+  background: rgba(212,168,67,0.2);
+  border-color: var(--gold);
+  color: var(--gold2);
+  box-shadow: 0 0 20px rgba(212,168,67,0.2);
+}
+
+/* ========= MAIN CONTENT ========= */
+#main {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem 6rem;
+}
+
+/* ========= CHAPTER BLOCK ========= */
+.chapter {
+  margin-bottom: 6rem;
+}
+.chapter-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, rgba(212,168,67,0.04) 0%, rgba(26,10,46,0.6) 100%);
+  border: 1px solid rgba(212,168,67,0.15);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.chapter-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(212,168,67,0.04) 0%, transparent 60%);
+  animation: headerGlow 6s ease-in-out infinite;
+}
+@keyframes headerGlow {
+  0%,100%{opacity:0.5;} 50%{opacity:1;}
+}
+.ch-number {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+.ch-name-sa {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1.8rem;
+  color: var(--gold2);
+  margin-bottom: 0.3rem;
+}
+.ch-name-en {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+.ch-name-bn {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.ch-intro {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.7;
+  font-style: italic;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ========= SHLOKA CARD ========= */
+.shloka-card {
+  background: rgba(10,5,20,0.7);
+  border: 1px solid rgba(212,168,67,0.12);
+  border-radius: 14px;
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+  transition: border-color 0.4s, box-shadow 0.4s;
+  position: relative;
+}
+.shloka-card:hover {
+  border-color: rgba(212,168,67,0.35);
+  box-shadow: 0 0 40px rgba(212,168,67,0.08), 0 8px 32px rgba(0,0,0,0.4);
+}
+.shloka-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--gold), var(--lotus), var(--cyan));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.shloka-card:hover::before { opacity: 1; }
+
+.shloka-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.5rem;
+  border-bottom: 1px solid rgba(212,168,67,0.08);
+  background: rgba(212,168,67,0.03);
+}
+.shloka-num {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+}
+.flip-btn {
+  background: none;
+  border: 1px solid rgba(212,168,67,0.3);
+  color: var(--gold);
+  padding: 4px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-family: 'Crimson Pro', serif;
+  transition: all 0.3s;
+}
+.flip-btn:hover {
+  background: rgba(212,168,67,0.15);
+}
+
+/* ========= BOOK FLIP ANIMATION ========= */
+.book-flip-wrap {
+  perspective: 1000px;
+  padding: 1.5rem 1.5rem 0;
+}
+.book-flip {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.645,0.045,0.355,1.000);
+}
+.book-flip.flipped { transform: rotateY(180deg); }
+
+.book-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.book-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Sanskrit text */
+.shloka-sa {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--gold2);
+  font-weight: 400;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(212,168,67,0.1);
+  margin-bottom: 1rem;
+}
+
+/* Translation + Explanation tabs */
+.tabs {
+  display: flex;
+  gap: 6px;
+  padding: 1rem 1.5rem 0;
+  border-top: 1px solid rgba(212,168,67,0.08);
+  margin-top: 0.5rem;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  transition: all 0.25s;
+}
+.tab-btn.active {
+  color: var(--gold2);
+  border-bottom-color: var(--gold);
+}
+
+.tab-content {
+  padding: 1.2rem 1.5rem 1.5rem;
+  display: none;
+}
+.tab-content.active { display: block; }
+
+.lang-block { margin-bottom: 1.2rem; }
+.lang-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  opacity: 0.7;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  font-family: 'Cinzel Decorative', serif;
+}
+.trans-hi {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+.trans-bn {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+.trans-en {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text);
+  font-style: italic;
+}
+.explanation {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: #c8b89a;
+  padding: 1rem;
+  background: rgba(212,168,67,0.04);
+  border-left: 2px solid rgba(212,168,67,0.3);
+  border-radius: 0 8px 8px 0;
+  margin-top: 0.5rem;
+}
+.exp-hi {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #c8b89a;
+}
+.exp-bn {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #c8b89a;
+}
+
+/* ========= OPEN BOOK SVG ========= */
+.open-book-anim {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0 0;
+  opacity: 0.6;
+}
+
+/* ========= SCROLL LOTUS ========= */
+.lotus-divider {
+  text-align: center;
+  margin: 3rem 0;
+  font-size: 2rem;
+  color: var(--gold);
+  opacity: 0.4;
+  animation: lotusFloat 3s ease-in-out infinite;
+}
+@keyframes lotusFloat {
+  0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);}
+}
+
+/* ========= READING PROGRESS ========= */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--lotus), var(--cyan));
+  z-index: 9999;
+  transition: width 0.1s;
+  box-shadow: 0 0 10px rgba(212,168,67,0.5);
+}
+
+/* ========= BACK TO TOP ========= */
+#back-top {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(10,5,20,0.85);
+  border: 1px solid rgba(212,168,67,0.3);
+  color: var(--gold);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+}
+#back-top:hover { background: rgba(212,168,67,0.15); }
+#back-top.show { display: flex; }
+
+/* ========= FOOTER ========= */
+footer {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 4rem 2rem;
+  border-top: 1px solid rgba(212,168,67,0.1);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+footer .om-footer {
+  font-size: 3rem;
+  color: var(--gold);
+  opacity: 0.5;
+  margin-bottom: 1rem;
+  font-family: 'Noto Serif Devanagari', serif;
+}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width:600px) {
+  .shloka-sa { font-size: 0.95rem; }
+  .chapter-header { padding: 2rem 1rem; }
+}
+
+/* ========= SHOOTING STAR ========= */
+.shooting-star {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+  animation: shoot 1s linear forwards;
+}
+@keyframes shoot {
+  0%   { transform: translate(0,0) scale(1); opacity:1; }
+  100% { transform: translate(300px, 200px) scale(0); opacity:0; }
+}
+
+/* Glow on scroll */
+.shloka-card.in-view {
+  animation: cardReveal 0.7s ease forwards;
+}
+@keyframes cardReveal {
+  from { opacity:0; transform:translateY(30px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- Reading progress -->
+<div id="progress-bar" style="width:0%"></div>
+
+<!-- Cosmic background -->
+<div id="cosmos">
+  <div class="stars-layer"></div>
+  <canvas id="starfield"></canvas>
+  <div class="nebula n1"></div>
+  <div class="nebula n2"></div>
+  <div class="nebula n3"></div>
+  <div class="nebula n4"></div>
+</div>
+
+<!-- Mandala -->
+<div id="mandala-wrap">
+  <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="var(--gold)" stroke-width="0.5" transform="translate(250,250)">
+      <!-- Mandala rings -->
+      <circle r="240" stroke-width="0.3"/><circle r="200"/><circle r="160"/><circle r="120"/><circle r="80"/>
+      <script>
+      </script>
+      <!-- Petals generated via JS below -->
+      <g id="petals"></g>
+    </g>
+  </svg>
+</div>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="om-symbol">ॐ</div>
+  <div class="hero-title-sa">श्रीमद्भगवद्गीता</div>
+  <div class="hero-title-en">Bhagavad Gita</div>
+  <div class="hero-title-bn">ভগবদ্গীতা</div>
+  <div class="divider"></div>
+  <p class="hero-subtitle">
+    The Song of God — a 700-verse Hindu scripture that is part of the epic Mahabharata.<br>
+    A timeless dialogue between Prince Arjuna and Lord Krishna on the battlefield of Kurukshetra.
+  </p>
+  <a href="#main" style="background:rgba(212,168,67,0.12);border:1px solid rgba(212,168,67,0.4);color:var(--gold2);padding:12px 32px;border-radius:40px;font-family:'Cinzel Decorative',serif;font-size:0.85rem;letter-spacing:0.2em;text-decoration:none;transition:all 0.3s;" 
+     onmouseover="this.style.background='rgba(212,168,67,0.22)'" 
+     onmouseout="this.style.background='rgba(212,168,67,0.12)'">
+    Begin Study ✦
+  </a>
+</section>
+
+<!-- Chapter Navigation -->
+<nav id="chapter-nav">
+  <h2>✦ Select Chapter ✦</h2>
+  <div class="chapter-grid" id="ch-nav-grid"></div>
+</nav>
+
+<!-- Main Content -->
+<div id="main"></div>
+
+<!-- Footer -->
+<footer>
+  <div class="om-footer">ॐ</div>
+  <p>यदा यदा हि धर्मस्य ग्लानिर्भवति भारत</p>
+  <p style="margin-top:8px;font-size:0.8rem;opacity:0.5;">Whenever dharma declines, I manifest myself — BG 4.7</p>
+</footer>
+
+<!-- Audio bar -->
+<div id="audio-bar">
+  <div id="sound-waves">
+    <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+    <div class="wave-bar"></div><div class="wave-bar"></div>
+  </div>
+  <button id="play-btn" title="Toggle Om Sound">🔔</button>
+  <div>
+    <div class="vol-label">OM Binaural</div>
+    <input type="range" id="vol-slider" min="0" max="100" value="40">
+  </div>
+</div>
+
+<!-- Back to top -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+/* ===================== GITA DATA ===================== */
+const gitaData = [
+  {
+    num: 1, sa: "अर्जुन विषाद योग", en: "Arjuna's Dilemma", bn: "অর্জুনের বিষাদযোগ",
+    intro: "On the battlefield of Kurukshetra, Arjuna sees his relatives and teachers arrayed against him and is overcome with grief and moral confusion, refusing to fight.",
+    shlokas: [
+      {
+        num:"1.1", sa:"धृतराष्ट्र उवाच।\nधर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः।\nमामकाः पाण्डवाश्चैव किमकुर्वत सञ्जय॥",
+        hi:"धृतराष्ट्र ने कहा: हे संजय! धर्मभूमि कुरुक्षेत्र में युद्ध की इच्छा से एकत्र हुए मेरे और पाण्डु के पुत्रों ने क्या किया?",
+        bn:"ধৃতরাষ্ট্র বললেন: হে সঞ্জয়! ধর্মক্ষেত্র কুরুক্ষেত্রে যুদ্ধের ইচ্ছায় সমবেত আমার এবং পাণ্ডুর পুত্রেরা কী করিল?",
+        en:"Dhritarashtra said: O Sanjaya, what did my sons and the sons of Pandu do when they had gathered together on the holy field of Kurukshetra, eager to fight?",
+        exp_en:"This opening verse sets the stage of the Bhagavad Gita. The blind king Dhritarashtra anxiously asks his charioteer Sanjaya about the events on the battlefield. The term 'Dharmakshetra' (field of dharma) for Kurukshetra is deeply significant — it suggests that what unfolds is not merely a physical battle but a war between righteousness and unrighteousness within every soul.",
+        exp_hi:"यह श्लोक भगवद्गीता की पृष्ठभूमि स्थापित करता है। अंधे राजा धृतराष्ट्र की चिंता और उनके मन की स्थिति उजागर होती है। 'धर्मक्षेत्र' शब्द का प्रयोग बताता है कि यह केवल भौतिक युद्ध नहीं, बल्कि प्रत्येक आत्मा में धर्म और अधर्म के बीच का संघर्ष है।",
+        exp_bn:"এই শ্লোকটি ভগবদ্গীতার পটভূমি স্থাপন করে। অন্ধ রাজা ধৃতরাষ্ট্রের উদ্বেগ প্রকাশ পায়। 'ধর্মক্ষেত্র' শব্দের ব্যবহার ইঙ্গিত দেয় যে এটি শুধু শারীরিক যুদ্ধ নয়, বরং প্রতিটি আত্মার মধ্যে ধর্ম ও অধর্মের সংগ্রাম।"
+      },
+      {
+        num:"1.28", sa:"अर्जुन उवाच।\ndृष्ट्वेमं स्वजनं कृष्ण युयुत्सुं समुपस्थितम्।\nसीदन्ति मम गात्राणि मुखं च परिशुष्यति॥",
+        hi:"अर्जुन ने कहा: हे कृष्ण! इस युद्ध में खड़े अपने स्वजनों को देखकर मेरे अंग शिथिल हो रहे हैं और मुख सूख रहा है।",
+        bn:"অর্জুন বললেন: হে কৃষ্ণ! যুদ্ধক্ষেত্রে দাঁড়িয়ে থাকা এই স্বজনদের দেখে আমার অঙ্গ-প্রত্যঙ্গ শিথিল হয়ে পড়ছে এবং মুখ শুকিয়ে যাচ্ছে।",
+        en:"Arjuna said: O Krishna, seeing these my kinsmen arrayed here eager to fight, my limbs fail me and my mouth is parched.",
+        exp_en:"Arjuna's physical symptoms — trembling limbs, dry mouth, skin burning, bow slipping — are classic symptoms of anxiety and moral shock. This is the human condition: when we face a crisis that pits duty against love. The Gita's entire teaching arises in response to this very real psychological and spiritual crisis.",
+        exp_hi:"अर्जुन के शारीरिक लक्षण — कंपन, मुँह सूखना — मानसिक और आत्मिक संकट के स्पष्ट संकेत हैं। जब कर्तव्य और प्रेम आपस में टकराते हैं, तो यही मनुष्य की दशा होती है। गीता की संपूर्ण शिक्षा इसी संकट के उत्तर में है।",
+        exp_bn:"অর্জুনের শারীরিক লক্ষণগুলি — অঙ্গ কাঁপছে, মুখ শুকাচ্ছে — মানসিক ও আত্মিক সংকটের স্পষ্ট প্রকাশ। যখন কর্তব্য ও প্রেম সংঘাতে পড়ে, মানুষের এই অবস্থাই হয়। গীতার সমগ্র শিক্ষা এই সংকটের উত্তরেই।"
+      }
+    ]
+  },
+  {
+    num: 2, sa: "सांख्य योग", en: "The Yoga of Knowledge", bn: "সাংখ্যযোগ",
+    intro: "Krishna begins his teachings by explaining the immortal nature of the soul (Atman), the concept of Svadharma, and the path of Nishkama Karma — action without attachment to results.",
+    shlokas: [
+      {
+        num:"2.19", sa:"य एनं वेत्ति हन्तारं यश्चैनं मन्यते हतम्।\nउभौ तौ न विजानीतो नायं हन्ति न हन्यते॥",
+        hi:"जो इसे (आत्मा को) मारने वाला समझता है और जो इसे मरा हुआ मानता है, वे दोनों नहीं जानते — यह न मारता है, न मारा जाता है।",
+        bn:"যে এটিকে (আত্মাকে) হত্যাকারী মনে করে এবং যে মনে করে এটি নিহত হয়েছে — উভয়েই সত্য জানে না; এটি হত্যা করে না, এটিকে হত্যা করা যায় না।",
+        en:"He who thinks this (soul) is a slayer and he who thinks it is slain — both of them fail to perceive the truth. This neither slays, nor is it slain.",
+        exp_en:"This is one of the Gita's most profound declarations. The Atman — the true Self — is beyond the reach of weapons, fire, water, and wind. It was never born and never dies. Understanding this dissolves the fear of death. Krishna uses this fundamental truth to help Arjuna see that his grief over 'killing' his kinsmen is rooted in ignorance of the soul's true nature.",
+        exp_hi:"यह गीता की सबसे गहरी उद्घोषणाओं में से एक है। आत्मा शस्त्र, अग्नि, जल और वायु से परे है। यह न जन्मती है, न मरती है। इस सत्य को जानने से मृत्यु का भय समाप्त हो जाता है। कृष्ण इस ज्ञान द्वारा अर्जुन का मोह दूर करते हैं।",
+        exp_bn:"এটি গীতার সবচেয়ে গভীর ঘোষণাগুলির একটি। আত্মা অস্ত্র, আগুন, জল ও বায়ুর অতীত। এটি জন্মায় না, মরে না। এই সত্য জানলে মৃত্যুর ভয় দূর হয়। কৃষ্ণ এই জ্ঞান দিয়ে অর্জুনের মোহ দূর করেন।"
+      },
+      {
+        num:"2.20", sa:"न जायते म्रियते वा कदाचिन्\nनायं भूत्वा भविता वा न भूयः।\nअजो नित्यः शाश्वतोऽयं पुराणो\nन हन्यते हन्यमाने शरीरे॥",
+        hi:"यह आत्मा न कभी जन्म लेती है, न कभी मरती है; न यह पहले थी और आगे नहीं होगी। यह अजन्मा, नित्य, शाश्वत और पुरातन है। शरीर के नाश होने पर भी इसका नाश नहीं होता।",
+        bn:"এই আত্মা কখনো জন্ম নেয় না, কখনো মরে না; এটি ছিল এবং থাকবে। এটি অজন্মা, নিত্য, শাশ্বত এবং পুরাতন। শরীর নষ্ট হলেও এটি নষ্ট হয় না।",
+        en:"The soul is never born nor dies at any time. It has not come into being, does not come into being, and will not come into being. It is unborn, eternal, ever-existing, and primeval. It is not slain when the body is slain.",
+        exp_en:"This verse is the cornerstone of Vedantic philosophy. The soul (Atman) exists in a dimension beyond time — it was never created and will never be destroyed. This understanding transforms one's relationship with death, loss, and grief. When we identify with the eternal Self rather than the temporary body, we gain equanimity in all circumstances.",
+        exp_hi:"यह श्लोक वेदान्त दर्शन का आधारस्तंभ है। आत्मा काल से परे एक आयाम में विद्यमान है। यह सत्य जीवन और मृत्यु, हानि और दुःख के साथ हमारे संबंध को बदल देता है। जब हम नश्वर शरीर के बजाय शाश्वत आत्मा से तादात्म्य स्थापित करते हैं, तो सभी परिस्थितियों में समता प्राप्त होती है।",
+        exp_bn:"এই শ্লোক বেদান্ত দর্শনের মূলভিত্তি। আত্মা কালের অতীত এক মাত্রায় বিদ্যমান। এই সত্য মৃত্যু, ক্ষতি ও দুঃখের সাথে আমাদের সম্পর্ক পরিবর্তন করে। যখন আমরা নশ্বর দেহের পরিবর্তে শাশ্বত আত্মার সাথে একাত্ম হই, তখন সব পরিস্থিতিতে সমতা লাভ হয়।"
+      },
+      {
+        num:"2.47", sa:"कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥",
+        hi:"तुम्हारा अधिकार केवल कर्म करने में है, फल की इच्छा में नहीं। कर्म के फल का कारण मत बनो और अकर्मण्यता में भी आसक्ति मत रखो।",
+        bn:"তোমার অধিকার শুধু কর্মে, ফলে কখনো নয়। কর্মফলের কারণ হইও না এবং অকর্মণ্যতায়ও আসক্তি রেখো না।",
+        en:"You have a right to perform your prescribed duties, but you are not entitled to the fruits of your actions. Never consider yourself the cause of the results of your activities, and never be attached to not doing your duty.",
+        exp_en:"This is perhaps the single most quoted verse of the Bhagavad Gita and contains the essence of Karma Yoga. Krishna teaches that we must act with full commitment but release attachment to outcomes. This is not passivity — it is the highest form of engaged action. When we work without craving reward, we act with clarity, freedom, and greater effectiveness. This principle is the foundation of selfless service (Seva).",
+        exp_hi:"यह संभवतः भगवद्गीता का सर्वाधिक उद्धृत श्लोक है और कर्मयोग का सार है। कृष्ण सिखाते हैं: पूरी लगन से काम करो, लेकिन परिणाम की आसक्ति छोड़ दो। यह निष्क्रियता नहीं है — यह उच्चतम सक्रिय कर्म है। जब हम पुरस्कार की लालसा के बिना कार्य करते हैं, तो स्पष्टता और स्वतंत्रता के साथ काम होता है।",
+        exp_bn:"এটি সম্ভবত ভগবদ্গীতার সর্বাধিক উদ্ধৃত শ্লোক এবং কর্মযোগের সারমর্ম। কৃষ্ণ শেখান: পূর্ণ নিষ্ঠায় কাজ করো, কিন্তু ফলের আসক্তি ছেড়ে দাও। এটি নিষ্ক্রিয়তা নয় — এটি সর্বোচ্চ সক্রিয় কর্ম। যখন পুরস্কারের লোভ ছাড়া কাজ করি, তখন স্পষ্টতা ও স্বাধীনতা আসে।"
+      },
+      {
+        num:"2.48", sa:"योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय।\nसिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते॥",
+        hi:"हे धनंजय! योग में स्थित होकर, आसक्ति त्यागकर कर्म करो। सफलता और विफलता में समान रहो — इसी समत्व को योग कहते हैं।",
+        bn:"হে ধনঞ্জয়! যোগে স্থিত হয়ে, আসক্তি ত্যাগ করে কর্ম করো। সিদ্ধি ও অসিদ্ধিতে সমান থাকো — এই সমত্বকেই যোগ বলা হয়।",
+        en:"Be steadfast in yoga, O Arjuna. Perform your duty and abandon all attachment to success or failure. Such evenness of mind is called yoga.",
+        exp_en:"Here Krishna defines Yoga in its most practical form: equanimity (Samatvam). Yoga is not just physical postures or meditation techniques — it is the capacity to remain psychologically stable in all situations. Success should not cause elation; failure should not cause dejection. This mental balance is both the means and the goal of spiritual practice.",
+        exp_hi:"यहाँ कृष्ण योग को उसके सबसे व्यावहारिक रूप में परिभाषित करते हैं: समत्व। योग केवल शारीरिक आसन या ध्यान-तकनीक नहीं है — यह सभी परिस्थितियों में मानसिक स्थिरता की क्षमता है। सफलता में अति-उत्साह नहीं, विफलता में निराशा नहीं। यह मानसिक संतुलन ही साधना का साधन और लक्ष्य दोनों है।",
+        exp_bn:"এখানে কৃষ্ণ যোগকে তার সবচেয়ে ব্যবহারিক রূপে সংজ্ঞায়িত করেন: সমত্ব। যোগ শুধু শারীরিক আসন বা ধ্যান-কৌশল নয় — এটি সব পরিস্থিতিতে মানসিক স্থিরতার ক্ষমতা। সাফল্যে অতি-উৎসাহ নয়, ব্যর্থতায় হতাশা নয়। এই মানসিক ভারসাম্যই সাধনার উপায় ও লক্ষ্য উভয়ই।"
+      }
+    ]
+  },
+  {
+    num: 3, sa: "कर्म योग", en: "The Yoga of Action", bn: "কর্মযোগ",
+    intro: "Krishna elaborates on Karma Yoga — the path of selfless action. He explains why action is necessary and how one can act without generating karma by performing duties as an offering to the divine.",
+    shlokas: [
+      {
+        num:"3.21", sa:"यद्यदाचरति श्रेष्ठस्तत्तदेवेतरो जनः।\nस यत्प्रमाणं कुरुते लोकस्तदनुवर्तते॥",
+        hi:"श्रेष्ठ पुरुष जो-जो आचरण करते हैं, साधारण लोग उसी का अनुसरण करते हैं। वह जो प्रमाण स्थापित करते हैं, लोग उसी का अनुकरण करते हैं।",
+        bn:"শ্রেষ্ঠ ব্যক্তি যা যা আচরণ করেন, সাধারণ মানুষ তাই অনুসরণ করে। তিনি যে মান স্থাপন করেন, মানুষ তাই অনুকরণ করে।",
+        en:"Whatever a great man does, that other men also do. Whatever standard he sets, the world follows.",
+        exp_en:"This verse highlights the immense responsibility of leaders, teachers, parents, and all those in positions of influence. Leadership is not just about authority — it is about the quality of one's actions. Society models itself on its exemplars. This is why Krishna himself says in the next verse that he continues to act even though he needs nothing, lest people be led astray.",
+        exp_hi:"यह श्लोक नेताओं, शिक्षकों, माता-पिता और प्रभावशाली लोगों की जिम्मेदारी को उजागर करता है। समाज अपने आदर्शों का अनुकरण करता है। इसीलिए कृष्ण कहते हैं कि वे स्वयं बिना किसी आवश्यकता के कार्य करते हैं, ताकि लोग पथभ्रष्ट न हों।",
+        exp_bn:"এই শ্লোক নেতা, শিক্ষক, পিতামাতা ও প্রভাবশালীদের বিশাল দায়িত্ব তুলে ধরে। সমাজ তার আদর্শদের অনুকরণ করে। এ কারণেই কৃষ্ণ বলেন যে তিনি কোনো প্রয়োজন ছাড়াই কাজ করেন, যাতে মানুষ পথভ্রষ্ট না হয়।"
+      }
+    ]
+  },
+  {
+    num: 4, sa: "ज्ञान कर्म संन्यास योग", en: "The Yoga of Knowledge & Action", bn: "জ্ঞানকর্মসন্ন্যাসযোগ",
+    intro: "Krishna reveals the eternal nature of his teachings, the concept of divine incarnation (Avatar), and the transformative power of the fire of knowledge in burning all karmas.",
+    shlokas: [
+      {
+        num:"4.7", sa:"यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।\nअभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥",
+        hi:"हे भारत! जब-जब धर्म की हानि होती है और अधर्म बढ़ता है, तब-तब मैं स्वयं प्रकट होता हूँ।",
+        bn:"হে ভারত! যখনই ধর্মের অবক্ষয় হয় এবং অধর্ম বৃদ্ধি পায়, তখনই আমি নিজেকে প্রকাশ করি।",
+        en:"Whenever there is a decline in righteousness and an increase in unrighteousness, O Arjuna, at that time I manifest myself.",
+        exp_en:"This is the famous verse of divine incarnation (Avatara). Krishna declares that the Divine is not distant or indifferent — it responds to the moral needs of the world. This verse offers immense hope: whenever humanity falls into darkness, the light of wisdom and righteousness reappears. The Avatar concept in Hinduism represents the divine's compassionate engagement with human suffering.",
+        exp_hi:"यह अवतार की प्रसिद्ध घोषणा है। कृष्ण कहते हैं कि परमात्मा दूर या उदासीन नहीं है — वह संसार की नैतिक आवश्यकता पर प्रतिक्रिया करता है। यह श्लोक अपार आशा प्रदान करता है: जब भी मानवता अंधकार में डूबती है, ज्ञान और धर्म का प्रकाश पुनः प्रकट होता है।",
+        exp_bn:"এটি অবতারের বিখ্যাত ঘোষণা। কৃষ্ণ বলেন যে পরমাত্মা দূরে বা উদাসীন নয় — এটি পৃথিবীর নৈতিক প্রয়োজনে সাড়া দেয়। এই শ্লোক অসীম আশা দেয়: যখনই মানবতা অন্ধকারে ডুবে যায়, জ্ঞান ও ধর্মের আলো পুনরায় প্রকাশ পায়।"
+      },
+      {
+        num:"4.8", sa:"परित्राणाय साधूनां विनाशाय च दुष्कृताम्।\nधर्मसंस्थापनार्थाय सम्भवामि युगे युगे॥",
+        hi:"साधुओं की रक्षा करने, दुष्टों का विनाश करने और धर्म की स्थापना के लिए मैं युग-युग में जन्म लेता हूँ।",
+        bn:"সাধুদের রক্ষা করতে, দুষ্টদের বিনাশ করতে এবং ধর্ম প্রতিষ্ঠা করতে আমি যুগে যুগে জন্মগ্রহণ করি।",
+        en:"To protect the righteous, to annihilate the wicked, and to re-establish the principles of dharma, I appear millennium after millennium.",
+        exp_en:"Following verse 4.7, this completes the great promise of the divine. The three purposes — protecting the good, destroying evil, and establishing dharma — operate at cosmic, social, and individual levels simultaneously. At the personal level, whenever we turn toward goodness and face our inner darkness, the divine energy appears as guidance, clarity, or inspiration.",
+        exp_hi:"4.7 के बाद यह श्लोक दैवीय प्रतिज्ञा को पूर्ण करता है। तीन उद्देश्य — सज्जनों की रक्षा, दुष्टों का नाश, धर्म की स्थापना — एक साथ ब्रह्मांडीय, सामाजिक और व्यक्तिगत स्तरों पर क्रियाशील हैं। व्यक्तिगत स्तर पर, जब हम भीतर के अंधकार का सामना करते हैं, तब दैवीय शक्ति मार्गदर्शन, स्पष्टता या प्रेरणा के रूप में प्रकट होती है।",
+        exp_bn:"৪.৭-এর পর এই শ্লোক দৈবী প্রতিশ্রুতি সম্পূর্ণ করে। তিনটি উদ্দেশ্য — সাধুদের রক্ষা, দুষ্টদের বিনাশ, ধর্ম প্রতিষ্ঠা — একসাথে মহাজাগতিক, সামাজিক ও ব্যক্তিগত স্তরে কার্যকর। ব্যক্তিগত স্তরে, যখন আমরা অভ্যন্তরীণ অন্ধকারের মুখোমুখি হই, তখন দৈবী শক্তি পথনির্দেশনা, স্পষ্টতা বা অনুপ্রেরণা রূপে প্রকাশ পায়।"
+      }
+    ]
+  },
+  {
+    num: 6, sa: "ध्यान योग", en: "The Yoga of Meditation", bn: "ধ্যানযোগ",
+    intro: "Krishna describes the practice of Raja Yoga — meditation, mind control, and the disciplined life of the yogi. He reveals the characteristics of a self-realized person and the ultimate union with the Divine.",
+    shlokas: [
+      {
+        num:"6.5", sa:"उद्धरेदात्मनात्मानं नात्मानमवसादयेत्।\nआत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः॥",
+        hi:"अपने आप से अपना उद्धार करो, स्वयं को पतित मत होने दो। क्योंकि आत्मा ही अपना मित्र है और आत्मा ही अपना शत्रु है।",
+        bn:"নিজেকে নিজে উদ্ধার করো, নিজেকে পতন করতে দিও না। কারণ আত্মাই নিজের বন্ধু এবং আত্মাই নিজের শত্রু।",
+        en:"Elevate yourself through the power of your mind, and do not degrade yourself, for the mind can be the friend and also the enemy of the self.",
+        exp_en:"This is a remarkable declaration of individual responsibility and inner sovereignty. No external savior can do for us what only we can do for ourselves. The disciplined mind becomes our greatest ally; the undisciplined mind becomes our worst enemy. This verse is the cornerstone of yoga psychology: self-mastery begins with the recognition that we are both the problem and the solution.",
+        exp_hi:"यह व्यक्तिगत जिम्मेदारी और आंतरिक संप्रभुता की उल्लेखनीय घोषणा है। कोई बाहरी उद्धारकर्ता वह नहीं कर सकता जो केवल हम स्वयं कर सकते हैं। अनुशासित मन सबसे बड़ा सहयोगी बनता है; अनुशासनहीन मन सबसे बड़ा शत्रु। यह श्लोक योग-मनोविज्ञान की आधारशिला है: आत्म-नियंत्रण इस पहचान से शुरू होता है कि हम स्वयं ही समस्या और समाधान दोनों हैं।",
+        exp_bn:"এটি ব্যক্তিগত দায়িত্ব ও অভ্যন্তরীণ সার্বভৌমত্বের উল্লেখযোগ্য ঘোষণা। কোনো বাহ্যিক উদ্ধারকর্তা সেটা করতে পারেন না যা শুধু আমরাই করতে পারি। শৃঙ্খলাবদ্ধ মন সবচেয়ে বড় সহযোগী; অশৃঙ্খল মন সবচেয়ে বড় শত্রু। এই শ্লোক যোগ-মনোবিজ্ঞানের ভিত্তিপ্রস্তর: আত্ম-নিয়ন্ত্রণ এই স্বীকৃতি থেকে শুরু হয় যে আমরা নিজেরাই সমস্যা এবং সমাধান উভয়।"
+      }
+    ]
+  },
+  {
+    num: 9, sa: "राजविद्या राजगुह्य योग", en: "The Yoga of Royal Knowledge", bn: "রাজবিদ্যারাজগুহ্যযোগ",
+    intro: "Krishna reveals the most confidential knowledge: the supreme mystery of divine love and devotion (Bhakti). He explains that he pervades all creation and that sincere devotion, regardless of birth or status, is the direct path to liberation.",
+    shlokas: [
+      {
+        num:"9.22", sa:"अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते।\nतेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥",
+        hi:"जो लोग अनन्य भाव से मेरा चिंतन करते हुए मेरी उपासना करते हैं, उन नित्य योगयुक्त भक्तों का योगक्षेम (प्राप्ति और रक्षा) मैं स्वयं वहन करता हूँ।",
+        bn:"যারা একনিষ্ঠ ভাবে আমাকে চিন্তা করে আমার উপাসনা করেন, সেই নিত্য যোগযুক্ত ভক্তদের যোগক্ষেম (প্রাপ্তি ও রক্ষা) আমি নিজে বহন করি।",
+        en:"For those who worship me with devotion, meditating on my transcendental form, I carry what they lack and preserve what they have.",
+        exp_en:"This is one of the most tender and reassuring verses in all of scripture. The Divine here takes on the role of a loving caretaker: 'I will carry your burdens.' The word 'Yoga-Kshema' beautifully encompasses both acquiring what you need (Yoga) and protecting what you have (Kshema). For a sincere devotee, the universe itself becomes supportive and protective.",
+        exp_hi:"यह सम्पूर्ण शास्त्रों में सबसे कोमल और आश्वस्त करने वाले श्लोकों में से एक है। यहाँ परमात्मा एक प्रेमपूर्ण संरक्षक की भूमिका लेता है: 'मैं तुम्हारे भार वहन करूँगा।' 'योगक्षेम' शब्द सुंदर रूप से जो चाहिए उसे प्राप्त करना (योग) और जो है उसे सुरक्षित रखना (क्षेम) — दोनों को समेटता है।",
+        exp_bn:"এটি সমস্ত শাস্ত্রের মধ্যে সবচেয়ে কোমল ও আশ্বস্তকারী শ্লোকগুলির একটি। এখানে পরমাত্মা একজন স্নেহশীল পরিচর্যাকারীর ভূমিকা নেন: 'আমি তোমার বোঝা বহন করব।' 'যোগক্ষেম' শব্দটি সুন্দরভাবে যা প্রয়োজন তা অর্জন (যোগ) এবং যা আছে তা রক্ষা (ক্ষেম) — উভয়কে অন্তর্ভুক্ত করে।"
+      }
+    ]
+  },
+  {
+    num: 11, sa: "विश्वरूप दर्शन योग", en: "The Vision of the Cosmic Form", bn: "বিশ্বরূপদর্শনযোগ",
+    intro: "Krishna grants Arjuna divine vision to behold his cosmic form (Vishwaroopa) — the infinite, all-encompassing form containing all beings, time, and creation within itself.",
+    shlokas: [
+      {
+        num:"11.32", sa:"श्री भगवानुवाच।\nकालोऽस्मि लोकक्षयकृत्प्रवृद्धो\nलोकान्समाहर्तुमिह प्रवृत्तः।",
+        hi:"श्रीकृष्ण ने कहा: मैं महाकाल हूँ, लोकों का नाश करने वाला — यहाँ लोकों को समेटने के लिए प्रवृत्त हुआ हूँ।",
+        bn:"শ্রীকৃষ্ণ বললেন: আমি মহাকাল, লোকসমূহের ক্ষয়কারী — এখানে জগৎসমূহ সংহার করতে প্রবৃত্ত হয়েছি।",
+        en:"The Lord said: I am mighty time, the destroyer of worlds, now made manifest to destroy the worlds. Even without your participation, all the warriors arrayed here shall cease to exist.",
+        exp_en:"This awe-inspiring verse reveals the most overwhelming aspect of Krishna's cosmic form. Time (Kala) is presented as the ultimate reality — the force that moves through all creation, consuming everything. This vision destroys Arjuna's ego-based hesitation: the outcome of the battle has already been determined by cosmic forces. His role is to be an instrument, not the doer.",
+        exp_hi:"यह श्लोक कृष्ण के विश्वरूप के सबसे विस्मयकारी पहलू को प्रकट करता है। काल (समय) को परम सत्य के रूप में प्रस्तुत किया गया है — वह शक्ति जो सम्पूर्ण सृष्टि में व्याप्त है। यह दर्शन अर्जुन के अहंकार-जनित संकोच को नष्ट करता है: युद्ध का परिणाम ब्रह्मांडीय शक्तियों द्वारा निर्धारित हो चुका है।",
+        exp_bn:"এই শ্লোক কৃষ্ণের বিশ্বরূপের সবচেয়ে বিস্ময়কর দিক প্রকাশ করে। কাল (সময়) কে পরম সত্য হিসেবে উপস্থাপন করা হয়েছে — সেই শক্তি যা সমগ্র সৃষ্টিতে ব্যাপ্ত। এই দর্শন অর্জুনের অহংকার-জনিত দ্বিধা ধ্বংস করে: যুদ্ধের পরিণতি ইতিমধ্যে মহাজাগতিক শক্তি দ্বারা নির্ধারিত।"
+      }
+    ]
+  },
+  {
+    num: 12, sa: "भक्ति योग", en: "The Yoga of Devotion", bn: "ভক্তিযোগ",
+    intro: "Krishna describes the qualities of the ideal devotee — one who is free from hatred, friendly to all, compassionate, beyond ego, steady in all circumstances, and surrendered to the Divine.",
+    shlokas: [
+      {
+        num:"12.13-14", sa:"अद्वेष्टा सर्वभूतानां मैत्रः करुण एव च।\nनिर्ममो निरहङ्कारः समदुःखसुखः क्षमी॥\nसन्तुष्टः सततं योगी यतात्मा दृढनिश्चयः।\nमय्यर्पितमनोबुद्धिर्यो मद्भक्तः स मे प्रियः॥",
+        hi:"जो सभी प्राणियों से द्वेष नहीं करता, सबका मित्र और दयालु है, ममता और अहंकार से रहित है, सुख-दुःख में समान है, क्षमावान, सदा संतुष्ट, योगी, संयमी, दृढ़-निश्चयी और मन-बुद्धि मुझे अर्पित करने वाला है — वह भक्त मुझे प्रिय है।",
+        bn:"যে সকল প্রাণীর প্রতি বিদ্বেষহীন, সকলের মিত্র ও দয়ালু, মমতা ও অহংকারশূন্য, সুখ-দুঃখে সমান, ক্ষমাশীল, সদা সন্তুষ্ট, যোগী, সংযমী, দৃঢ়নিশ্চয়ী এবং মন-বুদ্ধি আমাকে অর্পণ করেছেন — সেই ভক্ত আমার প্রিয়।",
+        en:"One who is not envious but is a kind friend to all creatures, who does not think himself a proprietor, who is free from false ego and equal in both happiness and distress, who is tolerant, always satisfied, self-controlled, and engaged in devotional service with determination — such a person is very dear to me.",
+        exp_en:"These two verses together paint the portrait of the ideal spiritual person — not someone who has escaped from life, but someone fully engaged in life with a transformed heart. This is not a list of demands but a description of natural qualities that emerge when the ego softens and love deepens. Compassion, friendliness, equanimity, and surrender become effortless when the heart opens to the Divine.",
+        exp_hi:"ये दो श्लोक मिलकर आदर्श साधक का चित्र बनाते हैं — कोई जो जीवन से भागा नहीं, बल्कि रूपांतरित हृदय से पूरी तरह जीवन में लीन है। यह मांगों की सूची नहीं, बल्कि उन स्वाभाविक गुणों का वर्णन है जो अहंकार नरम होने और प्रेम गहरा होने पर उभरते हैं।",
+        exp_bn:"এই দুটি শ্লোক মিলে আদর্শ সাধকের চিত্র তৈরি করে — যিনি জীবন থেকে পালাননি, বরং রূপান্তরিত হৃদয়ে সম্পূর্ণ জীবনে নিমজ্জিত। এটি দাবির তালিকা নয়, বরং সেই স্বাভাবিক গুণাবলির বর্ণনা যা অহংকার নরম হলে এবং প্রেম গভীর হলে স্বতঃস্ফূর্তভাবে উদয় হয়।"
+      }
+    ]
+  },
+  {
+    num: 18, sa: "मोक्ष संन्यास योग", en: "The Yoga of Liberation", bn: "মোক্ষসন্ন্যাসযোগ",
+    intro: "The final chapter — Krishna summarizes the entire teaching and gives the ultimate instruction: surrender to the Divine completely. Arjuna's doubt is dissolved; he picks up his bow with clarity and resolve.",
+    shlokas: [
+      {
+        num:"18.66", sa:"सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।\nअहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥",
+        hi:"सभी धर्मों (कर्तव्यों) को छोड़कर केवल मेरी शरण में आ जा। मैं तुझे सभी पापों से मुक्त कर दूँगा — शोक मत कर।",
+        bn:"সমস্ত ধর্ম (কর্তব্য) পরিত্যাগ করে শুধু আমার শরণে এসো। আমি তোমাকে সমস্ত পাপ থেকে মুক্ত করব — শোক করো না।",
+        en:"Abandon all varieties of religion and just surrender unto Me. I shall deliver you from all sinful reactions. Do not fear.",
+        exp_en:"This is the Charama Shloka — the final and most important verse of the Gita. After 700 verses exploring different yogas, philosophies, and spiritual paths, it all distills into two words: Sharanam Vraja — 'take refuge in me.' This is not about abandoning moral responsibility, but about transcending the ego's anxious attempts to control and compute everything. The final instruction is: trust the Divine completely. The last two words, 'Ma Shuchah' — 'do not grieve' — are among the most comforting words in all of human spiritual literature.",
+        exp_hi:"यह चरम श्लोक है — गीता का अंतिम और सर्वाधिक महत्वपूर्ण श्लोक। विभिन्न योगों, दर्शनों और आध्यात्मिक मार्गों की 700 श्लोकों की यात्रा के बाद, सब कुछ दो शब्दों में समाहित हो जाता है: शरणं व्रज। अंतिम दो शब्द 'मा शुचः' — 'शोक मत कर' — मानवीय आध्यात्मिक साहित्य के सर्वाधिक सांत्वना देने वाले शब्दों में से हैं।",
+        exp_bn:"এটি চরম শ্লোক — গীতার চূড়ান্ত ও সর্বাধিক গুরুত্বপূর্ণ শ্লোক। বিভিন্ন যোগ, দর্শন ও আধ্যাত্মিক পথের ৭০০ শ্লোকের যাত্রার পর, সবকিছু দুটি শব্দে সঙ্কলিত হয়: শরণং ব্রজ। শেষ দুটি শব্দ 'মা শুচঃ' — 'শোক করো না' — মানবিক আধ্যাত্মিক সাহিত্যের সবচেয়ে সান্ত্বনাদায়ক শব্দগুলির মধ্যে।"
+      },
+      {
+        num:"18.78", sa:"यत्र योगेश्वरः कृष्णो यत्र पार्थो धनुर्धरः।\nतत्र श्रीर्विजयो भूतिर्ध्रुवा नीतिर्मतिर्मम॥",
+        hi:"जहाँ योगेश्वर कृष्ण हैं और जहाँ धनुर्धारी अर्जुन है — वहाँ श्री (समृद्धि), विजय, विभूति और नीति निश्चित है — यह मेरा मत है।",
+        bn:"যেখানে যোগেশ্বর কৃষ্ণ আছেন এবং যেখানে ধনুর্ধারী অর্জুন আছেন — সেখানে শ্রী (সমৃদ্ধি), বিজয়, বিভূতি এবং নীতি নিশ্চিত — এটাই আমার মত।",
+        en:"Wherever there is Krishna, the master of yoga, and wherever there is Arjuna, the supreme archer, there will certainly be opulence, victory, extraordinary power, and morality. This is my conviction.",
+        exp_en:"The Gita ends not with Arjuna's reply but with Sanjaya's vision — a beautiful conclusion. The combination of divine wisdom (Krishna) and human action (Arjuna) is where all blessings arise. This verse says: when we align our actions with divine wisdom, victory is not about defeating others, but about the emergence of dharma, beauty, power, and right-conduct in our lives. The Gita ends on a note of complete assurance.",
+        exp_hi:"गीता अर्जुन के उत्तर से नहीं, बल्कि संजय के दर्शन से समाप्त होती है — एक सुंदर समापन। दिव्य ज्ञान (कृष्ण) और मानवीय कर्म (अर्जुन) के संयोग से ही समस्त आशीर्वाद उत्पन्न होते हैं। यह श्लोक कहता है: जब हम अपने कार्यों को दिव्य ज्ञान के साथ संरेखित करते हैं, तो जीवन में धर्म, सौंदर्य, शक्ति और सदाचार का उदय होता है।",
+        exp_bn:"গীতা অর্জুনের উত্তর দিয়ে নয়, সঞ্জয়ের দর্শন দিয়ে শেষ হয় — একটি সুন্দর সমাপ্তি। দিব্য জ্ঞান (কৃষ্ণ) ও মানবিক কর্ম (অর্জুন) এর সমন্বয়েই সমস্ত আশীর্বাদ উৎপন্ন হয়। এই শ্লোক বলে: যখন আমরা আমাদের কাজকে দিব্য জ্ঞানের সাথে সংযুক্ত করি, তখন জীবনে ধর্ম, সৌন্দর্য, শক্তি ও সদাচারের উদয় হয়।"
+      }
+    ]
+  }
+];
+
+/* ===================== BUILD UI ===================== */
+const navGrid = document.getElementById('ch-nav-grid');
+const mainDiv = document.getElementById('main');
+
+gitaData.forEach(ch => {
+  // Nav button
+  const btn = document.createElement('a');
+  btn.href = `#ch-${ch.num}`;
+  btn.className = 'ch-btn';
+  btn.textContent = `Ch.${ch.num} · ${ch.en}`;
+  navGrid.appendChild(btn);
+
+  // Chapter section
+  const section = document.createElement('section');
+  section.className = 'chapter';
+  section.id = `ch-${ch.num}`;
+
+  section.innerHTML = `
+    <div class="chapter-header">
+      <div class="ch-number">CHAPTER ${ch.num}</div>
+      <div class="ch-name-sa">${ch.sa}</div>
+      <div class="ch-name-en">${ch.en}</div>
+      <div class="ch-name-bn">${ch.bn}</div>
+      <div class="divider"></div>
+      <p class="ch-intro">${ch.intro}</p>
+    </div>
+  `;
+
+  ch.shlokas.forEach((s, idx) => {
+    const card = document.createElement('div');
+    card.className = 'shloka-card';
+    card.id = `s-${s.num.replace('.','_')}`;
+
+    const uid = `flip_${ch.num}_${idx}`;
+
+    card.innerHTML = `
+      <div class="shloka-meta">
+        <span class="shloka-num">✦ Shloka ${s.num}</span>
+        <button class="flip-btn" onclick="toggleFlip('${uid}', this)">📖 Show Sanskrit</button>
+      </div>
+
+      <div class="book-flip-wrap">
+        <div class="book-flip" id="${uid}">
+          <div class="book-face">
+            <div class="shloka-sa">${s.sa.replace(/\n/g,'<br>')}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab(this, 'trans_${uid}')">Translation</button>
+        <button class="tab-btn" onclick="switchTab(this, 'exp_${uid}')">Explanation</button>
+      </div>
+
+      <div class="tab-content active" id="trans_${uid}">
+        <div class="lang-block">
+          <div class="lang-label">Hindi · हिन्दी</div>
+          <div class="trans-hi">${s.hi}</div>
+        </div>
+        <div class="lang-block">
+          <div class="lang-label">Bengali · বাংলা</div>
+          <div class="trans-bn">${s.bn}</div>
+        </div>
+        <div class="lang-block">
+          <div class="lang-label">English</div>
+          <div class="trans-en">${s.en}</div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="exp_${uid}">
+        <div class="lang-block">
+          <div class="lang-label">English Explanation</div>
+          <div class="explanation">${s.exp_en}</div>
+        </div>
+        <div class="lang-block" style="margin-top:1rem">
+          <div class="lang-label">Hindi · हिन्दी व्याख्या</div>
+          <div class="explanation exp-hi">${s.exp_hi}</div>
+        </div>
+        <div class="lang-block" style="margin-top:1rem">
+          <div class="lang-label">Bengali · বাংলা ব্যাখ্যা</div>
+          <div class="explanation exp-bn">${s.exp_bn}</div>
+        </div>
+      </div>
+    `;
+
+    section.appendChild(card);
+
+    if(idx < ch.shlokas.length - 1){
+      const lDiv = document.createElement('div');
+      lDiv.className = 'lotus-divider';
+      lDiv.textContent = '✿';
+      section.appendChild(lDiv);
+    }
+  });
+
+  mainDiv.appendChild(section);
+});
+
+/* ===================== FLIP ===================== */
+function toggleFlip(uid, btn) {
+  const el = document.getElementById(uid);
+  el.classList.toggle('flipped');
+  btn.textContent = el.classList.contains('flipped') ? '📖 Show Sanskrit' : '📖 Hide Sanskrit';
+}
+
+/* ===================== TABS ===================== */
+function switchTab(btn, contentId) {
+  const card = btn.closest('.shloka-card');
+  card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  card.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(contentId).classList.add('active');
+}
+
+/* ===================== STARFIELD ===================== */
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let stars = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+for(let i=0;i<250;i++){
+  stars.push({
+    x: Math.random()*window.innerWidth,
+    y: Math.random()*window.innerHeight,
+    r: Math.random()*1.5+0.3,
+    speed: Math.random()*0.3+0.05,
+    alpha: Math.random()*0.8+0.2,
+    twinkle: Math.random()*Math.PI*2
+  });
+}
+
+function animStars(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  stars.forEach(s=>{
+    s.twinkle += 0.02;
+    const a = s.alpha*(0.6+0.4*Math.sin(s.twinkle));
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,255,240,${a})`;
+    ctx.fill();
+    s.y -= s.speed;
+    if(s.y<0){s.y=canvas.height;s.x=Math.random()*canvas.width;}
+  });
+  requestAnimationFrame(animStars);
+}
+animStars();
+
+/* ===================== FLOATING PARTICLES ===================== */
+function spawnParticle(){
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const size = Math.random()*4+1;
+  p.style.cssText=`
+    width:${size}px;height:${size}px;
+    left:${Math.random()*100}vw;
+    background:${Math.random()>0.5?'rgba(212,168,67,0.7)':'rgba(200,150,255,0.5)'};
+    animation-duration:${8+Math.random()*12}s;
+    animation-delay:${Math.random()*5}s;
+  `;
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),(20+Math.random()*15)*1000);
+}
+setInterval(spawnParticle,800);
+
+/* ===================== SHOOTING STARS ===================== */
+function shootingStar(){
+  const s = document.createElement('div');
+  s.className='shooting-star';
+  s.style.cssText=`top:${Math.random()*50}vh;left:${Math.random()*80}vw;`;
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),1100);
+}
+setInterval(shootingStar,4000+Math.random()*6000);
+
+/* ===================== PROGRESS BAR ===================== */
+window.addEventListener('scroll',()=>{
+  const pct = window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
+  document.getElementById('progress-bar').style.width = pct+'%';
+  const bt = document.getElementById('back-top');
+  bt.classList.toggle('show', window.scrollY>400);
+});
+
+/* ===================== SCROLL REVEAL ===================== */
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('in-view');
+  });
+},{threshold:0.08});
+document.querySelectorAll('.shloka-card').forEach(c=>obs.observe(c));
+
+/* ===================== CHAPTER NAV HIGHLIGHT ===================== */
+const sectionObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id = e.target.id;
+      document.querySelectorAll('.ch-btn').forEach(b=>{
+        b.classList.toggle('active', b.getAttribute('href')==='#'+id);
+      });
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.chapter').forEach(c=>sectionObs.observe(c));
+
+/* ===================== OM AUDIO (Web Audio API) ===================== */
+let audioCtx = null, omGain = null, playing = false;
+let oscList = [];
+
+function createOmSound(ctx){
+  const master = ctx.createGain();
+  master.gain.value = 0.4 * (document.getElementById('vol-slider').value/100);
+  master.connect(ctx.destination);
+  omGain = master;
+
+  // Om binaural: slight frequency difference between ears
+  const freqs = [136.1, 136.1*1.33, 136.1*1.5, 136.1*2];
+  freqs.forEach((f,i)=>{
+    const oL = ctx.createOscillator();
+    const oR = ctx.createOscillator();
+    const gL = ctx.createGain();
+    const gR = ctx.createGain();
+    const merger = ctx.createChannelMerger(2);
+    const splitter = ctx.createChannelSplitter(2);
+
+    oL.type = oR.type = i===0?'sine':'sine';
+    oL.frequency.value = f;
+    oR.frequency.value = f + (i===0?7:4); // binaural beat offset
+
+    const vol = i===0?0.5:0.15/(i+1);
+    gL.gain.value = vol;
+    gR.gain.value = vol;
+
+    oL.connect(gL); oR.connect(gR);
+    gL.connect(merger,0,0);
+    gR.connect(merger,0,1);
+    merger.connect(master);
+
+    oL.start(); oR.start();
+
+    // Slow LFO for breathing feel
+    const lfo = ctx.createOscillator();
+    const lfoGain = ctx.createGain();
+    lfo.frequency.value = 0.1 + i*0.05;
+    lfoGain.gain.value = vol*0.3;
+    lfo.connect(lfoGain);
+    lfoGain.connect(gL.gain);
+    lfoGain.connect(gR.gain);
+    lfo.start();
+
+    oscList.push(oL,oR,lfo);
+  });
+}
+
+document.getElementById('play-btn').addEventListener('click', ()=>{
+  if(!audioCtx){
+    audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+    createOmSound(audioCtx);
+    playing = true;
+  } else {
+    playing = !playing;
+    omGain.gain.setTargetAtTime(playing ? 0.4*(document.getElementById('vol-slider').value/100) : 0, audioCtx.currentTime, 0.5);
+  }
+  const waves = document.querySelectorAll('.wave-bar');
+  waves.forEach(w=>w.classList.toggle('paused',!playing));
+  document.getElementById('play-btn').textContent = playing ? '🔔' : '🔕';
+});
+
+document.getElementById('vol-slider').addEventListener('input', e=>{
+  if(omGain) omGain.gain.setTargetAtTime(0.4*(e.target.value/100), audioCtx.currentTime, 0.1);
+});
+
+/* ===================== MANDALA SVG PETALS ===================== */
+(function buildMandala(){
+  const g = document.getElementById('petals');
+  if(!g) return;
+  for(let i=0;i<16;i++){
+    const angle = (i/16)*Math.PI*2;
+    const petal = document.createElementNS('http://www.w3.org/2000/svg','ellipse');
+    petal.setAttribute('cx',Math.cos(angle)*160);
+    petal.setAttribute('cy',Math.sin(angle)*160);
+    petal.setAttribute('rx',30);
+    petal.setAttribute('ry',12);
+    petal.setAttribute('transform',`rotate(${angle*180/Math.PI},${Math.cos(angle)*160},${Math.sin(angle)*160})`);
+    petal.setAttribute('fill','rgba(212,168,67,0.4)');
+    g.appendChild(petal);
+    // inner ring
+    const p2 = petal.cloneNode();
+    p2.setAttribute('cx',Math.cos(angle)*110);
+    p2.setAttribute('cy',Math.sin(angle)*110);
+    p2.setAttribute('rx',20);p2.setAttribute('ry',8);
+    p2.setAttribute('transform',`rotate(${angle*180/Math.PI},${Math.cos(angle)*110},${Math.sin(angle)*110})`);
+    p2.setAttribute('fill','rgba(201,84,122,0.3)');
+    g.appendChild(p2);
+  }
+})();
+</script>
+</body>
+</html>
